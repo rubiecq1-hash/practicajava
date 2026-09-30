@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Página Web</title>
+  
+  <!-- Tailwind CSS CDN for utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Configuration for custom colors and fonts -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Outfit"', 'sans-serif'],
+          },
+          colors: {
+            pinksoft: {
+              50: '#fff5f7',
+              100: '#ffeef2',
+              200: '#ffdbe4',
+              300: '#ffb8cb',
+              400: '#f4acb7',
+              500: '#ea8a9a',
+              600: '#d86578',
+            },
+            coolgrey: {
+              50: '#f8f9fa',
+              100: '#f1f3f5',
+              200: '#e9ecef',
+              300: '#dee2e6',
+              400: '#ced4da',
+              500: '#adb5bd',
+              600: '#6c757d',
+              700: '#495057',
+              800: '#343a40',
+              900: '#212529',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 20px 40px -15px rgba(244, 172, 183, 0.25), 0 0 15px rgba(0,0,0,0.03);
+    }
+    
+    .btn-gradient {
+      background: linear-gradient(135deg, #f4acb7 0%, #ea8a9a 100%);
+      transition: all 0.25s ease-in-out;
+    }
+
+    .btn-gradient:hover {
+      background: linear-gradient(135deg, #ea8a9a 0%, #d86578 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -4px rgba(234, 138, 154, 0.4);
+    }
+
+    .btn-gradient:active {
+      transform: translateY(0);
+    }
+
+    .input-glow:focus-within {
+      box-shadow: 0 0 0 4px rgba(244, 172, 183, 0.25);
+      border-color: #f4acb7;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-pinksoft-50 via-coolgrey-50 to-pinksoft-100 min-h-screen font-sans flex flex-col justify-between items-center p-4 sm:p-6 text-coolgrey-800">
+
+  <!-- Header Branding Section -->
+  <header class="w-full max-w-md mx-auto mb-4 text-center flex flex-col items-center">
+    <div class="bg-white/80 backdrop-blur-sm p-3 px-6 rounded-2xl shadow-sm border border-pinksoft-200 inline-flex items-center gap-3 mb-2">
+      <!-- SENATI Logo with Fallback -->
+      <img src="img senati/senati.png" 
+           alt="SENATI Logo" 
+           class="h-9 w-auto object-contain"
+           onerror="this.onerror=null; this.src='https://placehold.co/180x50/f4acb7/ffffff?text=SENATI';" />
+    </div>
+    <span class="text-xs font-semibold tracking-wider text-pinksoft-600 uppercase bg-pinksoft-100 px-3 py-1 rounded-full border border-pinksoft-200">
+      Práctica Dirigida • Algoritmos 
+    </span>
+  </header>
+
+  <!-- Main Calculator Card -->
+  <main class="w-full max-w-md mx-auto">
+    <div class="glass-card rounded-3xl p-6 sm:p-8 transition-all">
+      
+      <!-- Section Title -->
+      <div class="text-center mb-6">
+        <h1 class="font-heading font-bold text-2xl text-coolgrey-800 mb-1">
+          Calculadora Interactiva
+        </h1>
+        <p class="text-xs text-coolgrey-500">
+          Ingresa los números y selecciona la operación deseada
+        </p>
+      </div>
+
+      <!-- Input Fields Section -->
+      <div class="space-y-4 mb-6">
+        
+        <!-- Input 1 -->
+        <div>
+          <label for="numero1" class="block text-xs font-bold text-coolgrey-600 uppercase tracking-wider mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-hashtag text-pinksoft-400"></i> Primer Número
+          </label>
+          <div class="relative flex items-center rounded-xl border border-coolgrey-300 bg-coolgrey-50/50 input-glow transition-all">
+            <div class="absolute left-4 text-coolgrey-400 pointer-events-none">
+              <i class="fa-solid fa-calculator"></i>
+            </div>
+            <input type="number" 
+                   id="numero1" 
+                   placeholder="Ej. 25"
+                   class="w-full py-3.5 pl-11 pr-4 bg-transparent rounded-xl text-coolgrey-800 font-semibold text-base outline-none placeholder:text-coolgrey-400 placeholder:font-normal">
+          </div>
+        </div>
+
+        <!-- Input 2 -->
+        <div>
+          <label for="numero2" class="block text-xs font-bold text-coolgrey-600 uppercase tracking-wider mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-hashtag text-pinksoft-400"></i> Segundo Número
+          </label>
+          <div class="relative flex items-center rounded-xl border border-coolgrey-300 bg-coolgrey-50/50 input-glow transition-all">
+            <div class="absolute left-4 text-coolgrey-400 pointer-events-none">
+              <i class="fa-solid fa-sliders"></i>
+            </div>
+            <input type="number" 
+                   id="numero2" 
+                   placeholder="Ej. 5"
+                   class="w-full py-3.5 pl-11 pr-4 bg-transparent rounded-xl text-coolgrey-800 font-semibold text-base outline-none placeholder:text-coolgrey-400 placeholder:font-normal">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Operation Buttons Section (Positioned Below Text Fields) -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-coolgrey-600 uppercase tracking-wider mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-wand-magic-sparkles text-pinksoft-400"></i> Operaciones
+        </label>
+        
+        <div class="grid grid-cols-2 gap-3">
+          
+          <!-- Sumar Button -->
+          <button type="button" 
+                  onclick="sumarNumeros()" 
+                  class="btn-gradient text-white font-medium py-3 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 group">
+            <svg class="w-5 h-5 fill-current opacity-90 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+            </svg>
+            <span>Sumar</span>
+          </button>
+
+          <!-- Restar Button -->
+          <button type="button" 
+                  onclick="restarNumeros()" 
+                  class="btn-gradient text-white font-medium py-3 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 group">
+            <svg class="w-5 h-5 fill-current opacity-90 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+              <path d="M19 13H5v-2h14v2z"/>
+            </svg>
+            <span>Restar</span>
+          </button>
+
+          <!-- Multiplicar Button -->
+          <button type="button" 
+                  onclick="multiplicarNumeros()" 
+                  class="btn-gradient text-white font-medium py-3 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 group">
+            <svg class="w-5 h-5 fill-current opacity-90 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+            <span>Multiplicar</span>
+          </button>
+
+          <!-- Dividir Button -->
+          <button type="button" 
+                  onclick="dividirNumeros()" 
+                  class="btn-gradient text-white font-medium py-3 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 group">
+            <svg class="w-5 h-5 fill-current opacity-90 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+              <path d="M19 13H5v-2h14v2zm-7-8a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm0 12a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/>
+            </svg>
+            <span>Dividir</span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Result Section -->
+      <div class="bg-gradient-to-r from-coolgrey-100 to-pinksoft-50 border border-pinksoft-200 rounded-2xl p-4 text-center">
+        <span class="text-xs uppercase font-bold text-coolgrey-500 tracking-wider block mb-1">
+          Resultado Obtenido
+        </span>
+        <div class="text-2xl sm:text-3xl font-heading font-extrabold text-pinksoft-600 break-words">
+          <span id="resultado">0</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="w-full max-w-md mx-auto mt-4 text-center text-xs text-coolgrey-500">
+    <p>© SENATI - Mi Página Web. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- External JavaScript Logic Link -->
+  <script src="j3.js"></script>
+
+</body>
+</html>

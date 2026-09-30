@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Página Web - Día de la Semana</title>
+  <style>
+    :root {
+      --bg-color: #f7f9fa;
+      --card-bg: #ffffff;
+      --primary-dark: #2b2d42;
+      --gray-medium: #6c757d;
+      --gray-light: #e9ecef;
+      --pink-soft: #f4acb7;
+      --pink-hover: #ea8a9a;
+      --pink-light: #ffe5ec;
+      --pink-accent: #d87093;
+      --border-color: #dee2e6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--primary-dark);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Encabezado Principal */
+    header {
+      width: 100%;
+      max-width: 500px;
+      background-color: var(--primary-dark);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      border-bottom: 4px solid var(--pink-soft);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      height: 40px;
+      width: auto;
+      background-color: #ffffff;
+      padding: 3px 8px;
+      border-radius: 6px;
+      object-fit: contain;
+    }
+
+    .brand-text {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .sub-title {
+      color: var(--pink-soft);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* Tarjeta Principal */
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.04);
+      border-top: 5px solid var(--pink-soft);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      background-color: var(--pink-soft);
+      color: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    .description {
+      font-size: 0.9rem;
+      color: var(--gray-medium);
+      margin-bottom: 20px;
+    }
+
+    /* Campo de Entrada con Icono */
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--gray-medium);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-wrapper svg {
+      position: absolute;
+      left: 12px;
+      width: 20px;
+      height: 20px;
+      fill: var(--gray-medium);
+      transition: fill 0.2s;
+    }
+
+    .input-wrapper input {
+      width: 100%;
+      padding: 12px 12px 12px 42px;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.2s;
+      background-color: #fafafa;
+    }
+
+    .input-wrapper input:focus {
+      border-color: var(--pink-soft);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(244, 172, 183, 0.3);
+    }
+
+    .input-wrapper input:focus + svg {
+      fill: var(--pink-accent);
+    }
+
+    /* Botón de Acción */
+    .btn {
+      width: 100%;
+      background-color: var(--pink-soft);
+      color: #ffffff;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    .btn:hover {
+      background-color: var(--pink-hover);
+    }
+
+    .btn:active {
+      transform: scale(0.99);
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      fill: #ffffff;
+    }
+
+    /* Caja de Resultado */
+    .result-box {
+      margin-top: 25px;
+      padding: 18px;
+      background-color: var(--gray-light);
+      border-left: 4px solid var(--gray-medium);
+      border-radius: 8px;
+      text-align: center;
+      font-size: 1.05rem;
+      color: var(--primary-dark);
+      transition: all 0.3s ease;
+    }
+
+    .result-box.active {
+      background-color: var(--pink-light);
+      border-left-color: var(--pink-accent);
+    }
+
+    .result-highlight {
+      color: var(--pink-accent);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gray-medium);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado con Logo SENATI -->
+  <header>
+    <div class="brand">
+      <div class="brand-text">SENATI</div>
+    </div>
+    <div class="sub-title">Algoritmos - Nivel 1</div>
+  </header>
+
+  <!-- Tarjeta del Ejercicio -->
+  <div class="card">
+    <div class="card-header">
+      <div class="badge">4</div>
+      <h2 class="card-title">Día de la Semana</h2>
+    </div>
+
+    <p class="description">Ingrese un número del 1 al 7 para determinar el día correspondiente.</p>
+
+    <!-- Caja de Texto con Icono -->
+    <div class="input-group">
+      <label for="numDia">Número del Día (1 - 7):</label>
+      <div class="input-wrapper">
+        <input type="number" id="numDia" min="1" max="7" placeholder="Ejemplo: 1 para Lunes">
+        <svg viewBox="0 0 24 24">
+          <path d="M19,4H18V2H16V4H8V2H6V4H5C3.89,4 3,4.89 3,6V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V6A2,2 0 0,0 19,4M19,20H5V10H19V20M19,8H5V6H19V8Z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Botón con Icono (Ubicado Abajo de la Caja) -->
+    <button class="btn" onclick="determinarDia()">
+      <svg viewBox="0 0 24 24">
+        <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
+      </svg>
+      Obtener Día
+    </button>
+
+    <!-- Resultado -->
+    <div class="result-box" id="resultado">
+      Ingrese un número del 1 al 7 y presione el botón.
+    </div>
+  </div>
+
+  <footer>
+    <p>Desarrollo de Software &copy; SENATI</p>
+  </footer>
+
+  <!-- Lógica JavaScript -->
+  <script>
+    function determinarDia() {
+      const input = document.getElementById('numDia');
+      const resultado = document.getElementById('resultado');
+      const numero = parseInt(input.value);
+
+      const dias = [
+        "Lunes", 
+        "Martes", 
+        "Miércoles", 
+        "Jueves", 
+        "Viernes", 
+        "Sábado", 
+        "Domingo"
+      ];
+
+      if (isNaN(numero) || numero < 1 || numero > 7) {
+        resultado.className = "result-box";
+        resultado.innerHTML = "⚠️ <b>Por favor, ingrese un número válido del 1 al 7.</b>";
+        return;
+      }
+
+      const diaNombre = dias[numero - 1];
+      resultado.className = "result-box active";
+      resultado.innerHTML = `El día ${numero} corresponde a: <span class="result-highlight">${diaNombre}</span>`;
+    }
+  </script>
+</body>
+</html>

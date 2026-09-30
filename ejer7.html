@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Página Web - Promedio Académico</title>
+  <style>
+    :root { --bg-color: #f7f9fa; --card-bg: #ffffff; --primary-dark: #2b2d42; --gray-medium: #6c757d; --gray-light: #e9ecef; --pink-soft: #f4acb7; --pink-hover: #ea8a9a; --pink-light: #ffe5ec; --pink-accent: #d87093; --border-color: #dee2e6; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { background-color: var(--bg-color); color: var(--primary-dark); padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+    header { width: 100%; max-width: 500px; background-color: var(--primary-dark); border-radius: 12px; padding: 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 4px solid var(--pink-soft); }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { height: 40px; background: #fff; padding: 3px 8px; border-radius: 6px; }
+    .brand-text { color: #fff; font-weight: 700; font-size: 1.1rem; }
+    .sub-title { color: var(--pink-soft); font-size: 0.85rem; }
+    .card { background-color: var(--card-bg); border-radius: 16px; padding: 30px; width: 100%; max-width: 500px; box-shadow: 0 8px 24px rgba(0,0,0,0.05); border-top: 5px solid var(--pink-soft); }
+    .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .badge { background-color: var(--pink-soft); color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+    .card-title { font-size: 1.3rem; }
+    .input-group { margin-bottom: 15px; }
+    .input-group label { display: block; font-size: 0.85rem; color: var(--gray-medium); margin-bottom: 6px; font-weight: 600; }
+    .input-wrapper input { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 10px; outline: none; }
+    .input-wrapper input:focus { border-color: var(--pink-soft); box-shadow: 0 0 0 3px rgba(244, 172, 183, 0.3); }
+    .btn { width: 100%; background-color: var(--pink-soft); color: #fff; border: none; padding: 14px; border-radius: 10px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: 0.2s; }
+    .btn:hover { background-color: var(--pink-hover); }
+    .result-box { margin-top: 20px; padding: 15px; background-color: var(--gray-light); border-left: 4px solid var(--gray-medium); border-radius: 8px; text-align: center; }
+    .result-box.active { background-color: var(--pink-light); border-left-color: var(--pink-accent); }
+    footer { margin-top: auto; padding: 20px; font-size: 0.85rem; color: var(--gray-medium); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="brand-text">SENATI</div>
+    </div>
+    <div class="sub-title">Algoritmos - Nivel 1</div>
+  </header>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="badge">7</div>
+      <h2 class="card-title">Promedio Académico</h2>
+    </div>
+
+    <div class="input-group">
+      <label for="nota1">Nota 1:</label>
+      <div class="input-wrapper"><input type="number" id="nota1" min="0" max="20" placeholder="0 - 20"></div>
+    </div>
+    <div class="input-group">
+      <label for="nota2">Nota 2:</label>
+      <div class="input-wrapper"><input type="number" id="nota2" min="0" max="20" placeholder="0 - 20"></div>
+    </div>
+    <div class="input-group">
+      <label for="nota3">Nota 3:</label>
+      <div class="input-wrapper"><input type="number" id="nota3" min="0" max="20" placeholder="0 - 20"></div>
+    </div>
+
+    <button class="btn" onclick="calcularPromedio()">Calcular Promedio</button>
+    <div class="result-box" id="resultado">Ingrese las 3 notas.</div>
+  </div>
+
+  <footer><p>Desarrollo de Software &copy; SENATI</p></footer>
+  <script src="j7.js"></script>
+</body>
+</html>
